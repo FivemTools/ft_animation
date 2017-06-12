@@ -1,6 +1,6 @@
 -- @Date:   2017-06-12T16:44:10+02:00
 -- @Project: FiveM Tools
--- @Last modified time: 2017-06-12T17:31:06+02:00
+-- @Last modified time: 2017-06-12T18:26:59+02:00
 -- @License: GNU General Public License v3.0
 
 local playAnim = false
@@ -60,6 +60,23 @@ function AnimActionScenario(data)
 end
 
 function AnimStop()
+  Citizen.CreateThread(function()
+
+    if playAnimation then
+
+      local playerPed = GetPlayerPed(-1);
+      if playerPed then
+        ClearPedTasks(playerPed)
+        playAnimation = false
+        TriggerEvent('ft_animation:Stopped')
+      end
+
+    end
+
+  end)
+end
+
+function AnimForceStop()
   Citizen.CreateThread(function()
 
     if playAnimation then

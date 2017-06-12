@@ -1,6 +1,6 @@
 -- @Date:   2017-06-12T16:47:02+02:00
 -- @Project: FiveM Tools
--- @Last modified time: 2017-06-12T17:28:53+02:00
+-- @Last modified time: 2017-06-12T18:27:19+02:00
 -- @License: GNU General Public License v3.0
 
 RegisterNetEvent('ft_animation:AnimAction')
@@ -16,4 +16,9 @@ end)
 RegisterNetEvent('ft_animation:AnimStop')
 AddEventHandler('ft_animation:AnimStop', function()
   AnimStop()
+end)
+
+RegisterNetEvent('ft_animation:AnimForceStop')
+AddEventHandler('ft_animation:AnimForceStop', function()
+  AnimForceStop()
 end)
