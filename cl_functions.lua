@@ -1,6 +1,6 @@
 -- @Date:   2017-06-12T16:44:10+02:00
 -- @Project: FiveM Tools
--- @Last modified time: 2017-06-12T20:59:22+02:00
+-- @Last modified time: 2017-06-13T11:15:06+02:00
 -- @License: GNU General Public License v3.0
 
 local playAnim = false
@@ -28,14 +28,14 @@ function AnimAction(data)
         Citizen.Wait(0)
         if not IsEntityPlayingAnim(playerPed, data.lib, data.anim, 3) then
           playAnim = false
-          TriggerEvent('ft_animation:Finish')
+          TriggerEvent('ft_animation:ClFinish')
           break
         end
 
       end
 
     else
-      TriggerEvent('ft_animation:Pending')
+      TriggerEvent('ft_animation:ClPending')
     end
 
   end)
@@ -53,7 +53,7 @@ function AnimActionScenario(data)
       end
 
     else
-      TriggerEvent('ft_animation:Pending')
+      TriggerEvent('ft_animation:ClPending')
     end
 
   end)
@@ -68,7 +68,7 @@ function AnimStop()
       if playerPed then
         ClearPedTasks(playerPed)
         playAnimation = false
-        TriggerEvent('ft_animation:Stopped')
+        TriggerEvent('ft_animation:ClStopped')
       end
 
     end
@@ -85,7 +85,7 @@ function AnimForceStop()
       if playerPed then
         ClearPedTasksImmediately(playerPed)
         playAnimation = false
-        TriggerEvent('ft_animation:Stopped')
+        TriggerEvent('ft_animation:ClStopped')
       end
 
     end
