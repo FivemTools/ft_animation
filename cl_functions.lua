@@ -1,6 +1,6 @@
 -- @Date:   2017-06-12T16:44:10+02:00
 -- @Project: FiveM Tools
--- @Last modified time: 2017-06-13T17:36:23+02:00
+-- @Last modified time: 2017-06-14T21:36:20+02:00
 -- @License: GNU General Public License v3.0
 
 local playAnim = false
@@ -107,12 +107,18 @@ function AnimForceStop()
     if playAnimation then
 
       local playerPed = GetPlayerPed(-1);
-      if playerPed then
+      if DoesEntityExist(playerPed) then
+
+        if dataAnim.lib ~= nil then
+          StopEntityAnim(playerPed, dataAnim.anim, dataAnim.lib, 3)
+        end
 
         ClearPedTasksImmediately(playerPed)
-        TriggerEvent('ft_animation:ClStopped')
 
         playAnimation = false
+        dataAnim = {}
+
+        TriggerEvent('ft_animation:ClStopped')
       end
 
     end
